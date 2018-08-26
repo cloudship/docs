@@ -1,6 +1,6 @@
 self.addEventListener("install", function(event){
   event.waitUntil(
-    caches.open("v23").then(function(cache){
+    caches.open("v25").then(function(cache){
       console.log("successful cache the files");
       return cache.addAll([
         "/docs/",
