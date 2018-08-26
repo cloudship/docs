@@ -1,4 +1,4 @@
-# todos
+# project name: docs
 another PWA tyled todo app
 
 2018.08.27:
