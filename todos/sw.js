@@ -1,9 +1,9 @@
 self.addEventListener("install", function(event){
   event.waitUntil(
-    caches.open("v22").then(function(cache){
+    caches.open("v23").then(function(cache){
       console.log("successful cache the files");
       return cache.addAll([
-        "/todos",
+        "/todos/",
         "/todos/index.html",
         "/todos/bundle.js"
       ])
