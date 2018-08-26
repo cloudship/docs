@@ -3,9 +3,9 @@ self.addEventListener("install", function(event){
     caches.open("v23").then(function(cache){
       console.log("successful cache the files");
       return cache.addAll([
-        "/todos/",
-        "/todos/index.html",
-        "/todos/bundle.js"
+        "/docs/",
+        "/docs/index.html",
+        "/docs/bundle.js"
       ])
     }).catch(function(err){
       console.log("fail to load cache: " + err)
