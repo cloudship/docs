@@ -1,5 +1,4 @@
-# project name: docs
-another PWA tyled todo app
+change history:
 
 2018.08.27:
 - 建立这个项目的github pages
