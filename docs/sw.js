@@ -1,8 +1,10 @@
-const CACHE_NAME = "v34";
+const CACHE_NAME = "v36";
 const cacheFiles = [
   "/docs/",
   "/docs/index.html",
-  "/docs/bundle.js"
+  "/docs/bundle.js",
+  "/docs/spectre.min.css",
+  "/docs/spectre-icons.min.css"
 ]
 
 self.addEventListener("install", function (event) {
@@ -21,7 +23,7 @@ self.addEventListener("fetch", function (event) {
   console.log("start loading cache content...")
   event.respondWith(
     caches.match(event.request).then(function (response) {
-      //in case there's a match
+      //in case there's a match in caches
       if (response) {
         console.log("now loading: " + event.request.url)
         return response;
