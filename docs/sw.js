@@ -1,4 +1,4 @@
-const CACHE_NAME = "v36";
+const CACHE_NAME = "v38";
 const cacheFiles = [
   "/docs/",
   "/docs/index.html",
