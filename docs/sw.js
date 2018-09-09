@@ -1,3 +1,5 @@
+
+
 const CACHE_NAME = "v38";
 const cacheFiles = [
   "/docs/",
@@ -47,3 +49,4 @@ self.addEventListener("fetch", function (event) {
     })
   )
 })
+
