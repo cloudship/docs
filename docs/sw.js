@@ -1,52 +1,30 @@
+/**
+ * Welcome to your Workbox-powered service worker!
+ *
+ * You'll need to register this file in your web app and you should
+ * disable HTTP caching for this file too.
+ * See https://goo.gl/nhQhGp
+ *
+ * The rest of the code is auto-generated. Please don't update this file
+ * directly; instead, make changes to your Workbox build configuration
+ * and re-run your build process.
+ * See https://goo.gl/2aRDsh
+ */
 
+importScripts("workbox-v3.6.2/workbox-sw.js");
+workbox.setConfig({modulePathPrefix: "workbox-v3.6.2"});
 
-const CACHE_NAME = "v38";
-const cacheFiles = [
-  "/docs/",
-  "/docs/index.html",
-  "/docs/bundle.js",
-  "/docs/spectre.min.css",
-  "/docs/spectre-icons.min.css"
-]
+importScripts(
+  "precache-manifest.60144109bbe17651b1eb050c29e4f6f4.js"
+);
 
-self.addEventListener("install", function (event) {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function (cache) {
-        console.log("start caching files: " + CACHE_NAME);
-        return cache.addAll(cacheFiles)
-      }, function (err) {
-        console.log("fail to open cache: " + err)
-      })
-  )
-})
+/**
+ * The workboxSW.precacheAndRoute() method efficiently caches and responds to
+ * requests for URLs in the manifest.
+ * See https://goo.gl/S9QRab
+ */
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
+workbox.precaching.suppressWarnings();
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-self.addEventListener("fetch", function (event) {
-  console.log("start loading cache content...")
-  event.respondWith(
-    caches.match(event.request).then(function (response) {
-      //in case there's a match in caches
-      if (response) {
-        console.log("now loading: " + event.request.url)
-        return response;
-      }
-      //in case there's no match
-      let req = event.request.clone();
-      fetch(req).then(
-        function (response) {
-          if (!reponse || response.status != 200 || response.type !== 'basic') { return response }
-          let res = response.clone();
-          caches.open(CACHE_NAME)
-            .then(function (cache) {
-              console.log("start cahcing new files ...")
-              cache.put(event.request, res)
-            })
-          return response;
-        }).catch(function () {
-          console.log("unable to resolve the request.")
-          return "unable to resolve the request.";
-        })
-    })
-  )
-})
-
+workbox.routing.registerRoute(/docs/, workbox.strategies.staleWhileRevalidate(), 'GET');
